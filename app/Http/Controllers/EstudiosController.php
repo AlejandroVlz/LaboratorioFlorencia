@@ -50,6 +50,11 @@ class EstudiosController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'usuario_id' => 'required',
+            'estudio_id'=> 'required',
+            'estatus'=> 'required'
+            ]);
 
         if($request->file){
 

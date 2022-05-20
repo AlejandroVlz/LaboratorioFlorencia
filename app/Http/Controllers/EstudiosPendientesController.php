@@ -100,6 +100,13 @@ class EstudiosPendientesController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'usuario_id' => 'required',
+            'estudio_id'=> 'required',
+            'estatus'=> 'required',
+            'file'=> 'required'
+        ]);
+
         $estudio = Estudiosusuarios::find($id);
         
         $estudio_file = $request->file('file')->store('public/estudios');

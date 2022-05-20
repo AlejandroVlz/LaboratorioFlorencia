@@ -59,7 +59,10 @@
                     @csrf
                     <input type="text" value="{{$cuenta->id}}" name="usuario_id" class="placeholder-gray-500 p-2 w-60 buscador border-2 border-blue-500"> <br> <br>
                    
-
+                    @error('usuario_id')
+                    <p class=" bg-red-500 text-center text-white" > {{$message}}</p>
+                    <br>
+                    @enderror
                     <select name="estudio_id" id="estudio_id" placeholder="Estudio_id" class="placeholder-gray-500 p-2 w-60 buscador border-2 border-blue-500">
 
                         @foreach($estudios as $estudiov)
@@ -70,6 +73,10 @@
                     </select>
 
                     <br><br>
+                    @error('estudio_id')
+                    <p class=" bg-red-500 text-center text-white" > {{$message}}</p>
+                    <br>
+                    @enderror
 
 
                     <select name="estatus" id="estatus" class="placeholder-gray-500 p-2 w-60 buscador border-2 border-blue-500">
@@ -77,6 +84,11 @@
                     </select>
                     <br>
                     <br>
+
+                    @error('estatus')
+                    <p class=" bg-red-500 text-center text-white" > {{$message}}</p>
+                    <br>
+                    @enderror
                     
                     <input type="submit" class="p-2 bg-blue-400 btn w-60 " value="GUARDAR"> <br> <br>
                 </form>

@@ -27,13 +27,28 @@
             @csrf
             <label for="Nombre" class="font-semibold ml-11">NOMBRE: </label><br>
             <input type="text" name="name" placeholder=" Ingresar usuario" class="ml-12 placeholder-gray-500 p-2 w-80 buscador  border-2 border-blue-500 ">
-            <br><br>
+            <br>
+            @error('name')
+            <p class="ml-12 w-60 bg-red-500 text-center text-white" > {{$message}}</p>
+            <br>
+            @enderror
+            <br>
             <label for="Email" class="font-semibold ml-11">Email: </label><br>
             <input type="email" name="email" placeholder=" Ingresar usuario" class="ml-12 placeholder-gray-500 p-2 w-80 buscador  border-2 border-blue-500 ">
-            <br><br>
+            <br>
+            @error('email')
+            <p class="ml-12 w-60 bg-red-500 text-center text-white" > {{$message}}</p>
+            <br>
+            @enderror
+            <br>
             <label for="password" class="font-semibold ml-11">CONTRASEÑA: </label><br>
             <input type="password" name="password" placeholder="Ingresar contraseña" class="ml-12 placeholder-gray-500 p-2 w-80 buscador  border-2 border-blue-500 ">
-            <br><br>
+            <br>
+            @error('password')
+            <p class="ml-12 w-60 bg-red-500 text-center text-white" > {{$message}}</p>
+            <br>
+            @enderror
+            <br>
             <label for="password" class="font-semibold ml-11">CONFIRMAR CONTRASEÑA: </label><br>
             <input type="password" name="password_confirmation" placeholder=" Ingresar contraseña" class="ml-12 placeholder-gray-500 p-2 w-80 buscador  border-2 border-blue-500 ">
             <br><br>
@@ -43,6 +58,10 @@
                 <option value="2">ADMINISTRADOR</option>
             </select>
             <br>
+            @error('perfil_id')
+            <p class="ml-12 w-60 bg-red-500 text-center text-white" > {{$message}}</p>
+            <br>
+            @enderror
             <br>
             <div class="flex justify-around">
                 <a><input type="submit" class="btnselect" value="AGREGAR CUENTA"> </a>

@@ -22,17 +22,20 @@
             @csrf
             @method('put')
             <label for="IDUSUARIO" class="pl-10 pb-4 w-60 font-semibold">ID USUARIO:</label><br>
-
             <input type="text" value="{{$estudio->usuario_id}}" name="usuario_id" class="ml-12 placeholder-gray-500 p-2 w-80 buscador  border-2 border-blue-500"> <br> <br>
-
+            @error('usuario_id')
+            <p class=" bg-red-500 text-center text-white" > {{$message}}</p>
+            <br>
+            @enderror
             <label for="IDESTUDIO" class="pl-10 pb-4 w-60 font-semibold">ID ESTUDIO:</label><br>
-
-
             
             <select name="estudio_id" id="estatus" class="ml-12 placeholder-gray-500 p-2 w-80 buscador  border-2 border-blue-500">
                 <option value="{{$estudio->estudio_id}}">{{$estudion->estudio}}</option>
             </select><br><br>
-
+            @error('estudio_id')
+            <p class=" bg-red-500 text-center text-white" > {{$message}}</p>
+            <br>
+            @enderror
             <label for="IDESTUDIO" class="pl-10 pb-4 w-60 font-semibold">ESTATUS DEL ESTUDIO:</label><br>
 
             <select name="estatus" id="estatus" class="ml-12 placeholder-gray-500 p-2 w-80 buscador  border-2 border-blue-500">
@@ -40,9 +43,16 @@
                 <option value="pendiente">PENDIENTE</option>
             </select>
             <br><br>
-
-            <input type="file" placeholder="Etudio" name="file" class="ml-12 placeholder-gray-500 p-2 w-80 buscador  border-2 border-blue-500"> <br> <br>
+            @error('estatus')
+            <p class=" bg-red-500 text-center text-white" > {{$message}}</p>
             <br>
+            @enderror
+            <input type="file" accept="application/pdf,application/vnd.ms-excel" placeholder="Estudio" name="file" class="ml-12 placeholder-gray-500 p-2 w-80 buscador  border-2 border-blue-500"> <br> <br>
+            <br>
+            @error('file')
+            <p class=" bg-red-500 text-center text-white" > {{$message}}</p>
+            <br>
+            @enderror
             
             <input type="submit" class="ml-12 p-2 w-80 bg-blue-500 border-2 border-blue-500 hover:bg-blue-200" value="ACTUALIZAR"> <br> <br>
         </form>

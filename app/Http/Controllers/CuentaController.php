@@ -49,6 +49,24 @@ class CuentaController extends Controller
      */
     public function store(Request $request)
     {
+        
+        $request->validate([
+            'nombre' => 'required',
+            'apellido_paterno'=> 'required',
+            'apellido_materno'=> 'required',
+            'sexo'=> 'required',
+            'fecha_nacimiento'=> 'required',
+            'CURP'=> 'required',
+            'celular'=> 'required',
+            'email'=> 'required',
+            'estado_id'=> 'required',
+            'municipio_id'=> 'required',
+            'localidad'=> 'required',
+            'cuenta_id'=> 'required'
+        ]);
+
+
+
         $cuenta = new Cuentas;
 
         $cuenta->nombre = $request->nombre;
@@ -108,6 +126,7 @@ class CuentaController extends Controller
      */
     public function edit(Request $request, $id)
     {
+        
 
         $estados = Estados::all();
         $municipios = Municipios::all();
@@ -136,6 +155,21 @@ class CuentaController extends Controller
      */
     public function update(Request $request, Cuentas $cuenta)
     {
+        $request->validate([
+            'nombre' => 'required',
+            'apellido_paterno'=> 'required',
+            'apellido_materno'=> 'required',
+            'sexo'=> 'required',
+            'fecha_nacimiento'=> 'required',
+            'CURP'=> 'required',
+            'celular'=> 'required',
+            'email'=> 'required',
+            'estado_id'=> 'required',
+            'municipio_id'=> 'required',
+            'localidad'=> 'required',
+            'cuenta_id'=> 'required'
+        ]);
+
         $cuenta->nombre = $request->nombre;
         $cuenta->apellido_paterno = $request->apellido_paterno;
         $cuenta->apellido_materno = $request->apellido_materno;

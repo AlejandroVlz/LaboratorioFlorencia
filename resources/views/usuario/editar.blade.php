@@ -44,9 +44,21 @@
             
             
             <input type="text" value="{{$cuenta[0]->nombre}}" placeholder="Nombre(s)" name="nombre" class="placeholder-gray-500 p-2 w-60 border-2 "> <br> <br>
+            @error('nombre')
+            <p class="p-2 w-60 bg-red-500 text-center text-white" > {{$message}}</p>
+            <br>
+            @enderror
             <input type="text" value="{{$cuenta[0]->apellido_paterno}}" placeholder="Primer apellido" name="apellido_paterno" class="placeholder-gray-500 p-2 w-60 border-2"> <br> <br>
+            @error('apellido_paterno')
+            <p class="p-2 w-60 bg-red-500 text-center text-white" > {{$message}}</p>
+            <br>
+            @enderror
             <input type="text" value="{{$cuenta[0]->apellido_materno}}" placeholder="Seundo apellido" name="apellido_materno" class="placeholder-gray-500 p-2 w-60 border-2"> <br> <br>
 
+            @error('apellido_materno')
+            <p class="p-2 w-60 bg-red-500 text-center text-white" > {{$message}}</p>
+            <br>
+            @enderror
             <label for="genero" class="p-2 w-60 ">Genero</label><br>
             <select name="sexo" id="sexo" class="p-2 w-60 border-2 ">
                 <option value="masculino">Masculino</option>
@@ -54,15 +66,32 @@
             </select>  <br><br>
 
             <label for="Fechadenacimiento" class="p-2 w-60 ">Fecha de nacimiento</label><br>
-
             <input type="date"  name="fecha_nacimiento" value="{{$cuenta[0]->fecha_nacimiento}}" class="p-2 w-60 border-2"> <br> <br>
 
+            @error('fecha_nacimiento')
+
+            <p class="p-2 w-60 bg-red-500 text-center text-white" > {{$message}}</p>
+            <br>
+            @enderror
             <input type="text" value="{{$cuenta[0]->CURP}}" placeholder="CURP" name="CURP" class="placeholder-gray-500 p-2 w-60 border-2"> <br> <br>
 
+            @error('CURP')
+            <p class="p-2 w-60 bg-red-500 text-center text-white" > {{$message}}</p>
+            <br>
+            @enderror
             <input type="tel" value="{{$cuenta[0]->celular}}" placeholder="Celular" name="celular" class="placeholder-gray-500 p-2 w-60 border-2"> <br> <br>
 
+            @error('celular')
+            <p class="p-2 w-60 bg-red-500 text-center text-white" > {{$message}}</p>
+            <br>
+            @enderror
 
             <input type="email" value="{{$cuenta[0]->email}}" placeholder="{{auth()->user()->email}}" name="email" class="placeholder-gray-500 p-2 w-60 border-2"> <br> <br>
+
+            @error('email')
+            <p class="p-2 w-60 bg-red-500 text-center text-white" > {{$message}}</p>
+            <br>
+            @enderror
 
             <label for="estado_id" class="p-2 w-60 ">Estado</label><br>
 
@@ -89,6 +118,10 @@
             <br><br>
 
             <input type="text" value="{{$cuenta[0]->localidad}}" placeholder="Localidad" name="localidad" class="placeholder-gray-500 p-2 w-60 border-2"> <br> <br>
+            @error('localidad')
+            <p class="p-2 w-60 bg-red-500 text-center text-white" > {{$message}}</p>
+            <br>
+            @enderror
 
             <label for="cuenta_id" class="p-2 w-60 ">Cuenta ID</label><br>
             <select name="cuenta_id" id="cuenta_id" class="p-2 w-60 ">
