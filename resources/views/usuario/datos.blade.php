@@ -3,6 +3,28 @@
 @section('titulo', 'Datos del usuario')
 
 
+
+
+@section('foto')
+
+@if(count($foto)==0)
+
+<div class=" rounded-full h-36 w-36 ">
+    <a href="{{route('foto.index')}}" class="btnedit">Agregar foto</a>
+</div>
+
+@else
+
+<div class=" rounded-full h-36 w-36 ">
+    <img class=" rounded-full h-36 w-36 " src="{{asset($foto[0]->imagen)}}" alt="">
+</div>
+
+@endif
+
+@endsection
+
+
+
 @section('contenido')
 
 <br>

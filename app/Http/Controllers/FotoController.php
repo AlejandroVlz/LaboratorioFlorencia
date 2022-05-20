@@ -3,30 +3,25 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\User;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
+use App\Models\Fotos;
 
-class VerCuentasController extends Controller
+
+
+
+class FotoController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
+        $id = auth()->user()->id;
+        $foto = Fotos::where('usuario_id', $id)->get();
 
-        $search = trim($request->get('search'));
-
-        $cuentas = DB::table('users')
-        ->select('id', 'name', 'email', 'perfil_id', 'created_at')
-        ->latest()
-        ->where('name', 'LIKE', '%' .$search. '%')
-        ->orwhere('id', 'LIKE', '%' .$search. '%')
-        ->paginate(5);
-
-
-        return view('administrador.vercuentas', compact('cuentas', 'search'));
+        return view('fotos.foto', compact('foto'));
     }
 
     /**
@@ -47,7 +42,34 @@ class VerCuentasController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'imagen' => 'required|image|max:2048'
+        ]);
+
+        $imagen = $request->file('imagen')->store('public/fotosperfil');
+        $url = Storage::url($imagen);
+
+        $id = auth()->user()->id;
+
+        $foto = Fotos::where('usuario_id', $id)->get();
+
+        if(count($foto)==0){
+
+            Fotos::create([
+                    
+                'usuario_id' => $request->usuario_id,
+                'imagen' => $url
+    
+            ]);
+            return redirect()->route('datos.index');
+
+        }else{
+
+            return back()->withErrors([
+                'message' => 'Tu foto ya ha sido registrada una vez',
+            ]);
+        }
+
     }
 
     /**
@@ -69,9 +91,7 @@ class VerCuentasController extends Controller
      */
     public function edit($id)
     {
-        $cuenta = User::find($id);
-
-        return view('administrador.editar', compact('cuenta'));
+        //
     }
 
     /**
@@ -83,17 +103,7 @@ class VerCuentasController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $user = User::find($id);
-
-        $user->name = $request->name;
-        $user->email = $request->email;
-        $user->password = $request->password;
-        $user->perfil_id = $request->perfil_id;
-        $user->save();
-
-        return redirect()->route('ver.index');
-
-
+        //
     }
 
     /**
@@ -104,11 +114,6 @@ class VerCuentasController extends Controller
      */
     public function destroy($id)
     {
-        $user = User::find($id);
-        $user->delete();
-
-        return redirect()->route('ver.index');
-
-
+        //
     }
 }

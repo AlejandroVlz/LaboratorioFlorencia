@@ -12,6 +12,7 @@ use App\Http\Controllers\VerEstudiosController;
 use App\Http\Controllers\BusquedaController;
 use App\Http\Controllers\EmailController;
 use App\Http\Controllers\EstudiosventasController;
+use App\Http\Controllers\FotoController;
 
 
 
@@ -106,4 +107,12 @@ Route::get('/ver/estudios', [VerEstudiosController::class, 'index'])->name('ver_
 
 
 /**graficas */
-Route::get('/Ventas', [EstudiosventasController::class, 'index'])->name('grafica.index');
+Route::get('/Grafica', [EstudiosventasController::class, 'index'])->name('grafica.index');
+
+
+/**Foto de perfol */
+
+
+Route::get('/Foto', [FotoController::class, 'index'])->name('foto.index');
+Route::post('/Foto/store', [FotoController::class, 'store'])->name('foto.store');
+

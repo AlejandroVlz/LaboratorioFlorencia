@@ -30,6 +30,7 @@ class BusquedaController extends Controller
         $resultados = DB::table('cuentas')
                             ->select('id', 'nombre', 'apellido_paterno', 'apellido_materno', 'email', 'celular', 'cuenta_id')
                             ->where('cuenta_id', 'LIKE', '%' .$search. '%')
+                            ->latest()
                             ->orwhere('nombre', 'LIKE', '%' .$search. '%')
                             ->orderBy('nombre', 'asc')
                             ->paginate(5);

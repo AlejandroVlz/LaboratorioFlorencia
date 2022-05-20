@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Estados;
 use App\Models\Municipios;
 use App\Models\Cuentas;
+use App\Models\Fotos;
+
 
 
 
@@ -20,8 +22,11 @@ class CuentaController extends Controller
     {
         $estados = Estados::all();
         $municipios = Municipios::all();
+        $id = auth()->user()->id;
+        $foto = Fotos::where('usuario_id', $id)->get();
+
         
-        return view('usuario.datos', compact(['estados', 'municipios']));
+        return view('usuario.datos', compact('estados', 'municipios', 'foto'));
     }
 
     
@@ -108,13 +113,16 @@ class CuentaController extends Controller
         $municipios = Municipios::all();
         $cuenta = Cuentas::where('cuenta_id', $id)->get();
 
+        $foto = Fotos::where('usuario_id', $id)->get();
+
+
         if(count($cuenta) == 0){
 
             return redirect()->route('datos.index');
 
         }else{
 
-            return view('usuario.editar', compact(['estados', 'municipios', 'cuenta']));
+            return view('usuario.editar', compact('estados', 'municipios', 'cuenta', 'foto'));
         }
 
     }

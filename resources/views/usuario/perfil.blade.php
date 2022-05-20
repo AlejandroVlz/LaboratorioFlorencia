@@ -3,6 +3,25 @@
 @section('titulo', 'Perfil')
 
 
+@section('foto')
+
+@if(count($foto)==0)
+
+<div class=" rounded-full h-36 w-36 ">
+    <a href="{{route('foto.index')}}" class="btnedit">Agregar foto</a>
+</div>
+
+@else
+
+<div class=" rounded-full h-36 w-36 ">
+    <img class=" rounded-full h-36 w-36 " src="{{asset($foto[0]->imagen)}}" alt="">
+</div>
+
+@endif
+
+
+@endsection
+
 @section('contenido')
 
 
@@ -37,11 +56,6 @@
 
     <label for="Nombre" class="pl-10 pb-4 w-60 font-semibold">Dirección:</label><br>
     <h1 class="pl-10 pb-4 w-60 ">{{$estado->estado}}, {{$municipio->municipio}}, {{$cuenta[0]->localidad}}</h1>
-
-
-
-
-
 
 
 </div>

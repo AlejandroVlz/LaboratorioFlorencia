@@ -49,10 +49,10 @@
         <table class="w-full">
             <tr>
                 <th class="thtabla">USUARIO</th>
-                <th class="thtabla">ESTUDIO</th>
-                <th class="thtabla">ESTATUS</th>
-                <th class="thtabla">ARCHIVO</th>
-                <th class="thtabla">FECHA</th>
+                <th class="thtabla">NOMBRE</th>
+                <th class="thtabla">EMAIL</th>
+                <th class="thtabla">CELULAR</th>
+                <th class="thtabla">CUENTA_ID</th>
                 <th class="thtabla">VER</th>
                 <th class="thtabla">ELIMINAR</th>
 
@@ -61,10 +61,10 @@
             @foreach($resultados as $resultado)
             <tr>
                 <td class="thtabla"><a>{{$resultado->cuenta_id}}</a></td>
-                <td class="thtabla">{{$resultado->nombre}}</td>
-                <td class="thtabla">{{$resultado->apellido_paterno}}</td>
-                <td class="thtabla">{{$resultado->apellido_materno}}</td>
+                <td class="thtabla">{{$resultado->nombre}} {{$resultado->apellido_paterno}} {{$resultado->apellido_materno}}</td>
                 <td class="thtabla">{{$resultado->email}}</td>
+                <td class="thtabla">{{$resultado->celular}}</td>
+                <td class="thtabla">{{$resultado->cuenta_id}}</td>
                 <td class="thtabla"><a href="{{route('estudios.show', $resultado->id)}}" class="btnedit">ver</a></td>
                 <td class="thtabla">
                         <form action="{{route('buscar.destroy', $resultado->id)}}" method="post">

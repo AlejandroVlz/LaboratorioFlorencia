@@ -27,7 +27,7 @@ class EstudiosController extends Controller
      */
     public function index()
     {
-        $cuentas = Cuentas::paginate(8);
+        $cuentas = Cuentas::orderBy('id', 'desc')->paginate(8);
     
         return view('estudios.datos_us', compact('cuentas'));
     }

@@ -31,6 +31,7 @@ class EstudiosPendientesController extends Controller
                             $estudios = DB::table('estudiosusuarios')
                             ->select('estudiosusuarios.id', 'estudiosusuarios.usuario_id', 'cuentas.nombre', 'cuentas.celular', 'cuentas.email', 'cuentas.apellido_paterno', 'cuentas.apellido_materno', 'estudiosusuarios.estudio_id', 'estudiosusuarios.estatus', 'estudiosusuarios.file', 'estudiosusuarios.created_at')
                             ->join('cuentas', 'estudiosusuarios.usuario_id', '=', 'cuentas.id')
+                            ->latest()
                             ->where('estudiosusuarios.estatus', '=', 'pendiente')
                             ->where('cuentas.nombre', 'LIKE', '%' .$search. '%')
                             ->paginate(10);

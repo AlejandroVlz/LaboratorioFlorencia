@@ -28,6 +28,7 @@
                     </div>
 
                     <div>
+                        
                         <h1>{{auth()->user()->name;}}</h1>
                     </div>
                     <br>
@@ -75,3 +76,6 @@
     
 </body>
 </html>
+
+
+

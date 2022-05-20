@@ -28,10 +28,8 @@
         <!--navegación -->
         
             <div class="border-2 border-blue-700 h-60 grid grid-cols-1 place-items-center">
-               
-                <div class=" bg-blue-800 rounded-full h-36 w-36 ">
-                    <img src="" alt="">
-                </div>
+                @yield('foto')               
+
 
                 <div>
                     
